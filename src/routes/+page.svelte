@@ -9,6 +9,8 @@
 	let sort: "id" | "name" = "id";
 	let order: "asc" | "desc" = "asc";
 
+	let searchValue = "";
+
 	function toggleSort() {
 		sort = sort === "id" ? "name" : "id";
 	}
@@ -16,18 +18,28 @@
 		order = order === "asc" ? "desc" : "asc";
 	}
 
-	$: sortedPokemons = pokemons.slice().sort((a, b) => {
-		if (sort === "id") {
-			return order === "asc" ? a.id - b.id : b.id - a.id;
-		} else {
-			return order === "asc" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
-		}
-	});
+	// filtered by search and sorted
+	$: filteredPokemons = pokemons
+		.filter((p) =>
+			searchValue ? p.name.includes(searchValue) || p.id === parseInt(searchValue) : true
+		)
+		.sort((a, b) => {
+			if (sort === "id") {
+				return order === "asc" ? a.id - b.id : b.id - a.id;
+			} else {
+				return order === "asc" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+			}
+		});
 </script>
 
 <div class="flex flex-col items-center justify-center gap-4 px-4 py-8">
 	<div class="flex w-full max-w-screen-md flex-col items-center justify-between gap-4 sm:flex-row">
-		<input type="text" placeholder="Search..." class="w-full rounded-md border-2 p-2 sm:max-w-sm" />
+		<input
+			bind:value={searchValue}
+			type="text"
+			placeholder="Search..."
+			class="w-full rounded-md border-2 p-2 sm:max-w-sm"
+		/>
 		<div class="flex w-full items-center justify-end gap-2">
 			Sort by:
 			<button
@@ -56,7 +68,7 @@
 		</div>
 	</div>
 	<div class="grid w-full max-w-screen-md gap-4 sm:grid-cols-2 lg:grid-cols-3">
-		{#each sortedPokemons as pokemon}
+		{#each filteredPokemons as pokemon}
 			<PokemonCard {pokemon} />
 		{/each}
 	</div>
