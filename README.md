@@ -1,38 +1,35 @@
-# create-svelte
+# Pokedex
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+A simple Pokedex app using [PokeAPI](https://pokeapi.co/) for the KreiosLabs assessment.
 
-## Creating a project
+Built with SvelteKit from my own simple [template](https://github.com/dotnize/svelte-playground) which is based on the official `create-svelte` TypeScript template, but with Tailwind CSS and my own Prettier & other formatting configurations.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Setup
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+1. Clone the repository
+   ```sh
+   git clone git@github.com:dotnize/pokedex.git
+   ```
+   or via HTTPS:
+   ```sh
+   git clone https://github.com/dotnize/pokedex.git
+   ```
+2. Install dependencies
+   ```sh
+   npm install # or pnpm install
+   ```
+3. Run the development server
+   ```sh
+   npm run dev # or pnpm dev
+   ```
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+### Building for production
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
+```sh
 npm run build
+
+# preview the production build
+npm run preview
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+This project can also be deployed easily to Vercel or Netlify with no additional configuration.
