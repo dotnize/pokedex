@@ -1,10 +1,10 @@
-import type { Pokemon } from "$lib/types";
+import type { PokemonPreview } from "$lib/types";
 
 interface PokemonsResponse {
 	count: number;
 	next: string | null;
 	previous: string | null;
-	results: Pokemon[];
+	results: PokemonPreview[];
 }
 
 export async function load() {

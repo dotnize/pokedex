@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Pokemon } from "$lib/types";
+	import type { PokemonPreview } from "$lib/types";
 	import { capitalize, formatDigits } from "$lib/utils";
 
-	export let pokemon: Pokemon;
+	export let pokemon: PokemonPreview;
 </script>
 
 <a
