@@ -21,7 +21,9 @@
 	// filtered by search and sorted
 	$: filteredPokemons = pokemons
 		.filter((p) =>
-			searchValue ? p.name.includes(searchValue) || p.id === parseInt(searchValue) : true
+			searchValue
+				? p.name.includes(searchValue.toLowerCase()) || p.id === parseInt(searchValue)
+				: true
 		)
 		.sort((a, b) => {
 			if (sort === "id") {
