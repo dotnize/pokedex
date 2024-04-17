@@ -1,5 +1,6 @@
 <script lang="ts">
 	import PokemonCard from "$lib/components/PokemonCard.svelte";
+	import ScrollTop from "$lib/components/ScrollTop.svelte";
 	import type { PokemonsResponse } from "$lib/types.js";
 	import { ArrowDown01, ArrowDownAZ, ArrowUp01, ArrowUpAZ } from "lucide-svelte";
 
@@ -37,6 +38,11 @@
 	async function fetchNewData() {
 		if (loading) return;
 		loading = true;
+
+		// reset sort & order
+		sort = "id";
+		order = "asc";
+
 		const res = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${pokemons.length}&limit=18`);
 		const data: PokemonsResponse = await res.json();
 
@@ -86,6 +92,7 @@
 	<title>Nate's Pokedex</title>
 </svelte:head>
 
+<ScrollTop />
 <div class="flex flex-col items-center justify-center gap-4 px-4 py-8">
 	<div class="flex w-full max-w-screen-md flex-col items-center justify-between gap-4 sm:flex-row">
 		<input
