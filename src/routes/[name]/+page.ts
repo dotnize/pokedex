@@ -39,7 +39,8 @@ export async function load({ params }: { params: { name: string } }) {
 	);
 
 	const listData: PokemonsResponse = await listResponse.json();
-	const next: PokemonPreview | null = listData.results[2] || null;
+	const next: PokemonPreview | null =
+		listData.results[0].name === params.name ? listData.results[1] : listData.results[2] || null;
 	const previous: PokemonPreview | null =
 		listData.results[0].name !== params.name ? listData.results[0] || null : null;
 
