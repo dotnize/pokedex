@@ -100,19 +100,29 @@
 			bind:value={searchValue}
 			type="text"
 			placeholder="Search..."
-			class="w-full rounded-md border-2 p-2 sm:max-w-sm"
+			class="h-12 w-full rounded border-2 bg-purple-50 p-2 text-purple-950 outline-none ring-1 ring-purple-300 focus:ring-2 focus:ring-purple-400 sm:max-w-sm"
 		/>
 		<div class="flex w-full items-center justify-end gap-2">
 			Sort by:
 			<button
-				class="flex rounded-md border-2 transition hover:border-blue-300"
+				class="flex h-12 items-center rounded-md border-2 border-purple-300 font-bold text-black transition hover:border-purple-500"
 				on:click={toggleSort}
 			>
-				<div class={"w-16 rounded-l-md p-1" + (sort === "id" ? " bg-blue-300" : "")}>ID</div>
-				<div class={"w-16 rounded-r-md p-1" + (sort === "name" ? " bg-blue-300" : "")}>Name</div>
+				<div
+					class={"flex h-full w-16 items-center justify-center rounded-l p-1" +
+						(sort === "id" ? " bg-purple-400" : "")}
+				>
+					ID
+				</div>
+				<div
+					class={"flex h-full w-16 items-center justify-center rounded-r p-1" +
+						(sort === "name" ? " bg-purple-400" : "")}
+				>
+					Name
+				</div>
 			</button>
 			<button
-				class="rounded-md border-2 p-1 transition hover:border-blue-300"
+				class="flex h-12 w-12 items-center justify-center rounded-md border-2 border-transparent bg-purple-400 p-1 text-purple-950 transition hover:border-purple-500"
 				on:click={toggleOrder}
 			>
 				{#if sort === "id"}
