@@ -99,7 +99,7 @@
 		<input
 			bind:value={searchValue}
 			type="text"
-			placeholder="Search..."
+			placeholder="Search by ID or name..."
 			class="h-12 w-full rounded border-2 bg-purple-50 p-2 text-purple-950 outline-none ring-1 ring-purple-300 focus:ring-2 focus:ring-purple-400 sm:max-w-sm"
 		/>
 		<div class="flex w-full items-center justify-end gap-2">
