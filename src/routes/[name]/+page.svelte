@@ -37,7 +37,7 @@
 	<div class="flex w-full max-w-screen-md justify-between gap-1">
 		{#if data.previous}
 			<a
-				class="flex h-16 w-full items-center justify-between gap-1 rounded-tl-md border-b-4 border-r-4 border-purple-500 bg-purple-400 p-1 md:gap-2 md:rounded-tl-full md:px-8"
+				class="flex h-16 w-full items-center justify-between gap-1 rounded-tl-md border-b-4 border-r-4 border-purple-500 bg-purple-400 p-1 hover:border-purple-400 md:gap-2 md:rounded-tl-full md:px-8"
 				href={`/${data.previous.name}`}
 			>
 				<ChevronLeft class="text-purple-900" />
@@ -50,13 +50,13 @@
 			</a>
 		{:else}
 			<div
-				class="flex h-16 w-full items-center justify-between gap-1 rounded-tl-md border-b-4 border-r-4 border-purple-400 bg-purple-300 p-1 md:gap-2 md:rounded-tl-full md:px-8"
+				class="flex h-16 w-full items-center justify-between gap-1 rounded-tl-md border-b-4 border-r-4 border-purple-300 bg-purple-300 p-1 md:gap-2 md:rounded-tl-full md:px-8"
 			/>
 		{/if}
 
 		{#if data.next}
 			<a
-				class="flex h-16 w-full items-center justify-between gap-1 rounded-tr-md border-b-4 border-r-4 border-purple-500 bg-purple-400 p-1 md:gap-2 md:rounded-tr-full md:px-8"
+				class="flex h-16 w-full items-center justify-between gap-1 rounded-tr-md border-b-4 border-r-4 border-purple-500 bg-purple-400 p-1 hover:border-purple-400 md:gap-2 md:rounded-tr-full md:px-8"
 				href={`/${data.next.name}`}
 			>
 				<div class="flex w-full flex-col items-center justify-center md:flex-row md:gap-2">
@@ -68,7 +68,7 @@
 			</a>
 		{:else}
 			<div
-				class="flex h-16 w-full items-center justify-between gap-1 rounded-tr-md border-b-4 border-r-4 border-purple-400 bg-purple-300 p-1 md:gap-2 md:rounded-tr-full md:px-8"
+				class="flex h-16 w-full items-center justify-between gap-1 rounded-tr-md border-b-4 border-r-4 border-purple-300 bg-purple-300 p-1 md:gap-2 md:rounded-tr-full md:px-8"
 			/>
 		{/if}
 	</div>
