@@ -74,10 +74,10 @@
 	</div>
 
 	<div
-		class="flex w-full max-w-screen-md flex-wrap gap-4 rounded-b-2xl border-b-4 border-r-4 border-purple-400 bg-purple-300 p-4 font-sans md:flex-nowrap"
+		class="flex w-full max-w-screen-md flex-wrap gap-4 rounded-b-2xl border-b-4 border-r-4 border-purple-400 bg-purple-300 p-4 font-sans text-purple-950 md:flex-nowrap"
 	>
 		<div class="flex flex-col justify-between gap-2">
-			<div class="flex w-full justify-between text-purple-950 md:pr-2">
+			<div class="flex w-full justify-between md:pr-2">
 				<h2 class="text-2xl font-bold">{capitalize(pokemon.name)}</h2>
 				<span class=""># <span class="text-xl font-bold">{formatDigits(pokemon.id)}</span></span>
 			</div>
@@ -91,9 +91,13 @@
 			</div>
 		</div>
 		<div class="flex w-full flex-col gap-2">
-			<div class="grid grid-cols-2 gap-y-4">
-				<span><span class="text-xl font-bold">Height</span>: {dmToM(pokemon.height)} m</span>
-				<span><span class="text-xl font-bold">Weight</span>: {hgToKg(pokemon.weight)} kg</span>
+			<div class="grid grid-cols-2 gap-y-4 text-center">
+				<span class="text-lg"
+					><span class="text-xl font-bold">Height</span>: {dmToM(pokemon.height)} m</span
+				>
+				<span class="text-lg"
+					><span class="text-xl font-bold">Weight</span>: {hgToKg(pokemon.weight)} kg</span
+				>
 				<div class="col-span-2 h-0.5 w-full bg-purple-400 bg-opacity-60" />
 			</div>
 			<div class="flex flex-col gap-2">
@@ -130,7 +134,7 @@
 						<div class="flex flex-1 flex-col items-center text-center font-mono">
 							<span class="text-xs">{stat.stat.name}</span>
 							<div
-								class={`flex w-full justify-center rounded-t bg-purple-500 p-1`}
+								class={`flex w-full items-center justify-center rounded-t bg-purple-400`}
 								style={`height: ${stat.base_stat}px`}
 							>
 								<span class="text-xs">{stat.base_stat}</span>
@@ -139,13 +143,11 @@
 					{/each}
 				</div>
 				<!-- stats for smaller screens, horizontal bar chart -->
-				<div
-					class="flex h-full w-full flex-col gap-2 rounded-md bg-purple-200 py-2 text-purple-950 sm:hidden"
-				>
+				<div class="flex h-full w-full flex-col gap-2 rounded-md bg-purple-200 py-2 sm:hidden">
 					{#each pokemon.stats as stat}
 						<div class="flex flex-1 items-center gap-0.5 text-center font-mono">
 							<div
-								class={`flex w-full justify-center rounded-r bg-purple-500 p-1`}
+								class={`flex h-8 w-full items-center justify-center rounded-r bg-purple-400`}
 								style={`width: ${stat.base_stat}px`}
 							>
 								<span class="text-xs">{stat.base_stat}</span>
