@@ -1,7 +1,6 @@
 import type { PokemonsResponse } from "$lib/types";
 
 export async function load() {
-	// TODO: pagination
 	const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=18");
 	const data: PokemonsResponse = await response.json();
 

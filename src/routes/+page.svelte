@@ -1,16 +1,17 @@
 <script lang="ts">
 	import PokemonCard from "$lib/components/PokemonCard.svelte";
+	import type { PokemonsResponse } from "$lib/types.js";
 	import { ArrowDown01, ArrowDownAZ, ArrowUp01, ArrowUpAZ } from "lucide-svelte";
 
 	export let data;
 
-	const pokemons = data.results;
+	let pokemons = data.results;
+
+	let loading = false;
 
 	let sort: "id" | "name" = "id";
 	let order: "asc" | "desc" = "asc";
-
 	let searchValue = "";
-
 	function toggleSort() {
 		sort = sort === "id" ? "name" : "id";
 	}
@@ -32,6 +33,51 @@
 				return order === "asc" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
 			}
 		});
+
+	async function fetchNewData() {
+		if (loading) return;
+		loading = true;
+		const res = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${pokemons.length}&limit=18`);
+		const data: PokemonsResponse = await res.json();
+
+		// add id and image to each pokemon based on URL
+		data.results = data.results.map((pokemon) => {
+			const id = parseInt(pokemon.url.split("/")[6]);
+			return {
+				...pokemon,
+				id,
+				imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
+			};
+		});
+
+		const updatedPokemons = pokemons;
+		updatedPokemons.push(...data.results);
+		pokemons = updatedPokemons;
+
+		loading = false;
+	}
+
+	function infiniteScroll() {
+		if (pageEndRef) {
+			const observer = new IntersectionObserver(
+				(entries) => {
+					const first = entries[0];
+					if (first.isIntersecting && !loading) {
+						fetchNewData();
+					}
+				},
+				{ threshold: 1 }
+			);
+			observer.observe(pageEndRef);
+		}
+	}
+
+	let pageEndRef: HTMLDivElement | null = null;
+	$: {
+		if (pageEndRef) {
+			infiniteScroll();
+		}
+	}
 </script>
 
 <!-- Probably not the best idea to duplicate this from the layout,
@@ -80,4 +126,9 @@
 			<PokemonCard {pokemon} />
 		{/each}
 	</div>
+	{#if !loading}
+		<div bind:this={pageEndRef} />
+	{:else}
+		Loading...
+	{/if}
 </div>
