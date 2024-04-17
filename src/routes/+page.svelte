@@ -34,6 +34,12 @@
 		});
 </script>
 
+<!-- Probably not the best idea to duplicate this from the layout,
+	but navigating from a detail page back to home doesn't reset the title so yeah -->
+<svelte:head>
+	<title>Nate's Pokedex</title>
+</svelte:head>
+
 <div class="flex flex-col items-center justify-center gap-4 px-4 py-8">
 	<div class="flex w-full max-w-screen-md flex-col items-center justify-between gap-4 sm:flex-row">
 		<input
