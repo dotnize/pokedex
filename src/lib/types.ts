@@ -21,7 +21,7 @@ export interface Pokemon {
 	weight: number;
 	types: {
 		slot: number;
-		type: { name: string; url: string };
+		type: Type;
 	}[];
 	abilities: {
 		slot: number;
@@ -43,4 +43,10 @@ export interface Pokemon {
 		back_female: string | null;
 		back_shiny_female: string | null;
 	};
+	weaknesses: Type[];
+}
+
+export interface Type {
+	name: string;
+	url: string;
 }
