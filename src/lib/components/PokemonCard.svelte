@@ -7,7 +7,7 @@
 
 <a
 	href={`/${pokemon.name}`}
-	class="relative flex flex-col items-center rounded-md border-b-4 border-r-4 border-purple-400 bg-purple-300 p-4 transition duration-200 hover:-rotate-2"
+	class="relative flex items-center justify-center rounded-md border-b-4 border-r-4 border-purple-400 bg-purple-300 p-4 transition duration-200 hover:-rotate-2 md:flex-col"
 >
 	<img height={144} width={144} src={pokemon.imageUrl} alt={`Image of ${pokemon.name}`} />
 	<span
