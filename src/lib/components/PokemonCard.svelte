@@ -6,7 +6,7 @@
 </script>
 
 <a
-	href={`/details/${pokemon.id}`}
+	href={`/${pokemon.name}`}
 	class="flex flex-col items-center rounded-lg border-2 p-4 transition hover:scale-[1.02]"
 >
 	<img height={144} width={144} src={pokemon.imageUrl} alt={`Picture of ${pokemon.name}`} />
