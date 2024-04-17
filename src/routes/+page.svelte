@@ -2,7 +2,7 @@
 	import PokemonCard from "$lib/components/PokemonCard.svelte";
 	import ScrollTop from "$lib/components/ScrollTop.svelte";
 	import type { PokemonsResponse } from "$lib/types.js";
-	import { ArrowDown01, ArrowDownAZ, ArrowUp01, ArrowUpAZ } from "lucide-svelte";
+	import { ArrowDown01, ArrowDownAZ, ArrowUp01, ArrowUpAZ, LoaderCircle } from "lucide-svelte";
 
 	export let data;
 
@@ -147,6 +147,6 @@
 	{#if !loading}
 		<div bind:this={pageEndRef} />
 	{:else}
-		Loading...
+		<LoaderCircle class="animate-spin text-purple-900" size={28} />
 	{/if}
 </div>
