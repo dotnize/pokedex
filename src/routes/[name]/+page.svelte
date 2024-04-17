@@ -6,8 +6,6 @@
 
 	$: pokemon = data.pokemon;
 
-	let selectedSprite: string;
-
 	// map types to tailwind colors, from copilot :D
 	const colors = new Map([
 		["normal", "bg-purple-400 border-purple-500"],
@@ -84,32 +82,12 @@
 				<span class=""># <span class="text-xl font-bold">{formatDigits(pokemon.id)}</span></span>
 			</div>
 			<div
-				class="relative flex h-full w-full items-center justify-center rounded-xl border-b-2 border-r-2 border-purple-400 bg-purple-200"
+				class="flex h-full w-full items-center justify-center rounded-xl border-b-2 border-r-2 border-purple-400 bg-purple-200"
 			>
-				<div
-					class="absolute left-0 top-0 flex items-center gap-1 rounded-br-xl rounded-tl-xl border-b-2 border-r-2 border-purple-300 bg-purple-100 p-1 text-purple-950"
-				>
-					Sprite:
-					<select class="rounded-br-xl bg-purple-200 p-1" bind:value={selectedSprite}>
-						{#each Object.entries(pokemon.sprites) as [key, url]}
-							{#if url && typeof url === "string"}
-								<!-- a button for this key to set selectedSprite -->>
-								<option
-									value={url}
-									selected={selectedSprite
-										? selectedSprite === url
-										: pokemon.sprites.front_default === url}
-								>
-									{key}
-								</option>
-							{/if}
-						{/each}
-					</select>
-				</div>
 				<img
 					height={768}
 					width={768}
-					src={selectedSprite || pokemon.sprites.front_default}
+					src={pokemon.sprites.front_default}
 					alt={`Image of ${pokemon.name}`}
 				/>
 			</div>
