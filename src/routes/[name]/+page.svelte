@@ -122,8 +122,9 @@
 
 			<div class="flex flex-col gap-2 pb-2">
 				<h3 class="text-xl font-bold">Stats</h3>
+				<!-- stats for smaller screens, vertical bar chart -->
 				<div
-					class="hidden h-40 w-full items-end gap-2 rounded-md bg-purple-200 px-2 text-purple-950 md:flex"
+					class="hidden h-40 w-full items-end gap-2 rounded-md bg-purple-200 px-2 text-purple-950 sm:flex"
 				>
 					{#each pokemon.stats as stat}
 						<div class="flex flex-1 flex-col items-center text-center font-mono">
@@ -134,6 +135,22 @@
 							>
 								<span class="text-xs">{stat.base_stat}</span>
 							</div>
+						</div>
+					{/each}
+				</div>
+				<!-- stats for smaller screens, horizontal bar chart -->
+				<div
+					class="flex h-full w-full flex-col gap-2 rounded-md bg-purple-200 py-2 text-purple-950 sm:hidden"
+				>
+					{#each pokemon.stats as stat}
+						<div class="flex flex-1 items-center gap-0.5 text-center font-mono">
+							<div
+								class={`flex w-full justify-center rounded-r bg-purple-500 p-1`}
+								style={`width: ${stat.base_stat}px`}
+							>
+								<span class="text-xs">{stat.base_stat}</span>
+							</div>
+							<span class="text-xs">{stat.stat.name}</span>
 						</div>
 					{/each}
 				</div>
