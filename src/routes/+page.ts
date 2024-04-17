@@ -1,11 +1,4 @@
-import type { PokemonPreview } from "$lib/types";
-
-interface PokemonsResponse {
-	count: number;
-	next: string | null;
-	previous: string | null;
-	results: PokemonPreview[];
-}
+import type { PokemonsResponse } from "$lib/types";
 
 export async function load() {
 	// TODO: pagination
