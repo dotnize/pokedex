@@ -41,7 +41,9 @@
 		{#if data.previous}
 			<a href={`/${data.previous?.name}`}>Back</a>
 		{/if}
-		<div class="flex w-full max-w-screen-md gap-4 rounded-2xl bg-blue-200 p-4">
+		<div
+			class="flex w-full max-w-screen-md flex-wrap gap-4 rounded-2xl bg-blue-200 p-4 md:flex-nowrap"
+		>
 			<div class="flex flex-col gap-2">
 				<h2 class="text-2xl font-bold">{capitalize(pokemon.name)}</h2>
 				<img
