@@ -39,10 +39,16 @@ export async function load({ params }: { params: { name: string } }) {
 	);
 
 	const listData: PokemonsResponse = await listResponse.json();
-	const next: PokemonPreview | null =
-		listData.results[0].name === params.name ? listData.results[1] : listData.results[2] || null;
+
+	let next: PokemonPreview | null = null;
+
+	// don't show next results for the last pokemon
+	if (pokemon.id < 1025) {
+		next =
+			listData.results[0]?.name === params.name ? listData.results[1] : listData.results[2] || null;
+	}
 	const previous: PokemonPreview | null =
-		listData.results[0].name !== params.name ? listData.results[0] || null : null;
+		listData.results[0]?.name !== params.name ? listData.results[0] || null : null;
 
 	return { pokemon, next, previous };
 }
