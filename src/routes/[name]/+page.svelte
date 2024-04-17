@@ -1,10 +1,17 @@
 <script lang="ts">
+	import { beforeNavigate } from "$app/navigation";
 	import { capitalize, dmToM, formatDigits, hgToKg } from "$lib/utils";
 	import { ChevronLeft, ChevronRight } from "lucide-svelte";
 
 	export let data;
 
 	$: pokemon = data.pokemon;
+
+	let selectedSprite: string;
+
+	beforeNavigate(() => {
+		selectedSprite = "";
+	});
 
 	// map types to tailwind colors, from copilot :D
 	const colors = new Map([
@@ -82,12 +89,35 @@
 				<span class=""># <span class="text-xl font-bold">{formatDigits(pokemon.id)}</span></span>
 			</div>
 			<div
-				class="flex h-full w-full items-center justify-center rounded-xl border-b-2 border-r-2 border-purple-400 bg-purple-200"
+				class="relative flex h-full w-full items-center justify-center rounded-xl border-b-2 border-r-2 border-purple-400 bg-purple-200"
 			>
+				<div
+					class="absolute left-0 top-0 flex items-center gap-1 rounded-br-xl rounded-tl-xl border-b-2 border-r-2 border-purple-300 bg-purple-100 p-1 text-purple-950"
+				>
+					Sprite:
+					<select
+						class="rounded-br-xl bg-purple-200 p-1"
+						value={selectedSprite || pokemon.sprites.front_default}
+						on:change={(e) => (selectedSprite = e.currentTarget.value)}
+					>
+						{#each Object.entries(pokemon.sprites) as [key, url]}
+							{#if url && typeof url === "string"}
+								<option
+									value={url}
+									selected={selectedSprite
+										? selectedSprite === url
+										: pokemon.sprites.front_default === url}
+								>
+									{key}
+								</option>
+							{/if}
+						{/each}
+					</select>
+				</div>
 				<img
 					height={768}
 					width={768}
-					src={pokemon.sprites.front_default}
+					src={selectedSprite || pokemon.sprites.front_default}
 					alt={`Image of ${pokemon.name}`}
 				/>
 			</div>
