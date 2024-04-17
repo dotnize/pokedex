@@ -1,4 +1,6 @@
 <script>
+	import "@fontsource/press-start-2p";
+
 	import "../app.css";
 </script>
 
@@ -6,9 +8,8 @@
 	<title>Nate's Pokedex</title>
 </svelte:head>
 
-<header class="flex h-32 flex-col items-center justify-center gap-4">
-	<a href="/" class="text-2xl font-bold">Pokedex</a>
-	<span>work in progress, will also explore other ui styles and add icons(?)</span>
+<header class="flex h-32 items-center justify-center">
+	<a href="/" class="font-title text-3xl font-bold">Pokedex</a>
 </header>
 
 <main>
