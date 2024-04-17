@@ -36,7 +36,8 @@
 		});
 
 	async function fetchNewData() {
-		if (loading) return;
+		// no infinite scroll if search results are too low, to avoid fetching too much
+		if (loading || filteredPokemons.length < 12) return;
 		loading = true;
 
 		// reset sort & order
